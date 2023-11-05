@@ -48,9 +48,10 @@ useEffect(()=>{
   if(imageList!==""){
     console.log(imageList,"truhew")
     try {
-       axios.post(`${process.env.REACT_APP_URL}`, { imageList });
-       setOpen(!open)
+       axios.post(`${process.env.REACT_APP_URL}/create`, { imageList });
        setImageList("");
+       setOpen(!open)
+       
       notification.success({message:"Image added successfully"})
     } catch (err) {
       console.log(err);
@@ -78,9 +79,6 @@ useEffect(()=>{
       >
         <Upload
           listType="picture-card"
-          onRemove={(e) => {
-            setImageList("");
-          }}
           fileList={
             imageList !== ""
               ? [
