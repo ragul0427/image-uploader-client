@@ -33,7 +33,7 @@ const ImageUpload = () => {
 
   const fetchData = async () => {
     try {
-      const result = await axios.get("http://localhost:8080/get");
+      const result = await axios.get(`${process.env.REACT_APP_URL}/get`);
       setData(get(result,"data.message"))
     } catch (e) {
       console.log(e);
@@ -48,7 +48,7 @@ useEffect(()=>{
   if(imageList!==""){
     console.log(imageList,"truhew")
     try {
-       axios.post("http://localhost:8080/create", { imageList });
+       axios.post(`${process.env.REACT_APP_URL}`, { imageList });
        setOpen(!open)
        setImageList("");
       notification.success({message:"Image added successfully"})
