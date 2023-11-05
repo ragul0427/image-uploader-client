@@ -14,6 +14,7 @@ const ImageUpload = () => {
   const [open, setOpen] = useState(false);
   const [dummy,setDummy]=useState(false)
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const uploadImage = async (imagename) => {
     if (imagename == null) return;
@@ -33,10 +34,13 @@ const ImageUpload = () => {
 
   const fetchData = async () => {
     try {
+      setLoading(true)
       const result = await axios.get(`${process.env.REACT_APP_URL}/get`);
       setData(get(result,"data.message"))
+      setLoading(false)
     } catch (e) {
       console.log(e);
+   
     }
   };
 
@@ -57,9 +61,7 @@ useEffect(()=>{
       console.log(err);
     }
   }
-  setTimeout(()=>{
-    fetchData();
-  },1000)
+ fetchData()
 },[imageList,dummy])
 
   return (
@@ -97,7 +99,7 @@ useEffect(()=>{
           </div>
         </Upload>
       </Modal>
-      <Swiper data={data}/>
+      <Swiper data={data} loading={loading}/>
     </>
   );
 };

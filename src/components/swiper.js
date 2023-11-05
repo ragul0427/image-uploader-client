@@ -5,12 +5,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation,Autoplay,Pagination } from 'swiper/modules';
+import {Skeleton} from "antd"
 
 
-function Swipers({data}) {
-  
+function Swipers({data,loading}) {
+  console.log(loading)
   return (
-    <div>
+    <Skeleton loading={loading}>
        <Swiper
         modules={[Navigation, Autoplay, Pagination]}
         navigation={{ clickable: true }}
@@ -33,7 +34,7 @@ function Swipers({data}) {
          );
        })}
       </Swiper>
-    </div>
+    </Skeleton>
   );
 }
 
