@@ -14,7 +14,7 @@ function Swipers({data}) {
        <Swiper
         modules={[Navigation, Autoplay, Pagination]}
         navigation={{ clickable: true }}
-        className="md:w-[80vw] h-[90vh]"
+        className="md:w-[80vw] md:h-[90vh]"
         scrollbar={{ draggable: true }}
         autoplay={{ delay: 2000 }}
       >
